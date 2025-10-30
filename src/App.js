@@ -12,7 +12,7 @@ class App {
     }
     // #3 구매 장수 계산
     const ticketCount = purchaseAmount / 1000;
-    console.log(`${ticketCount}개를 구매했습니다.`);
+    Console.log(`${ticketCount}개를 구매했습니다.`);
 
     // #5 로또 번호 출력
     // #6 당첨 번호 입력
