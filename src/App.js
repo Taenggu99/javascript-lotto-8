@@ -12,9 +12,16 @@ class App {
     }
     // #3 구매 장수 계산
     const ticketCount = purchaseAmount / 1000;
-    Console.log(`${ticketCount}개를 구매했습니다.`);
+    Console.print(`${ticketCount}개를 구매했습니다.`);
 
     // #5 로또 번호 출력
+    const tickets = [];
+    for (let i = 0; i < ticketCount; i++) {
+      const lotto = new Lotto(Lotto.generateRandomNumbers());
+      tickets.push(lotto.getNumbers());
+    }
+
+    tickets.forEach((numbers) => Console.print(`[${numbers.join(", ")}]`));
     // #6 당첨 번호 입력
     // #8 보너스 번호 입력
     // #12 당첨 통계 출력
@@ -33,6 +40,7 @@ class App {
     return true;
   }
   // #3 구매 장수 계산 함수
+
   // #5 로또 번호 출력 함수
   // #6 당첨 번호 입력 함수
   // #8 보너스 번호 입력 함수
