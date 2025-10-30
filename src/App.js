@@ -33,6 +33,10 @@ class App {
       throw new Error("[Error] 당첨 번호를 재 확인해주세요");
     }
     // #8 보너스 번호 입력
+    const bonusInput = await this.getBounusNumber();
+    const bonusNumber = Number(bonusInput.trim());
+
+
     // #12 당첨 통계 출력
     // #13 수익률 계산 및 출력
   }
