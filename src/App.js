@@ -33,8 +33,11 @@ class App {
       throw new Error("[Error] 당첨 번호를 재 확인해주세요");
     }
     // #8 보너스 번호 입력
-    const bonusInput = await this.getBounusNumber();
+    const bonusInput = await this.getBonusNumber();
     const bonusNumber = Number(bonusInput.trim());
+    if(!Lotto.isValidBonusNumber(bonusNumber)){
+      throw new Error ("[Error] 보너스 번호를 재 입력해주세요")
+    }
 
 
     // #12 당첨 통계 출력
@@ -67,6 +70,10 @@ class App {
     return true;
   }
   // #8 보너스 번호 입력 함수
+  async getBonusNumber(){
+    const input = await Console.readLineAsync("보너스 번호를 입력해주세요");
+    return input;
+  }
   // #12 당첨 통계 출력 함수
   // #13 수익률 계산 및 출력 함수
 }
