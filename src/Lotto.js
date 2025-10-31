@@ -32,7 +32,9 @@ class Lotto {
     if (numbers.length !== 6) return false; // 6개 입력
     const hasDuplicate = new Set(numbers).size !== numbers.length;
     if (hasDuplicate) return false; // 중복 검사
-    return numbers.every((num) => Number.isInteger(num) && num >= 1 && num <= 45);
+    return numbers.every(
+      (num) => Number.isInteger(num) && num >= 1 && num <= 45
+    );
   }
 
   // #9 보너스 번호 유효성 검사
@@ -41,8 +43,20 @@ class Lotto {
   }
 
   // #10 번호 일치 개수 계산
+  matchCount(winningNumbers) {
+    return this.#numbers.filter((num) => winningNumbers.includes(num)).length;
+  }
   // #11 등수 판별 (보너스 포함)
+  getRank(count, bonusNumber) {
+    const numbers = this.#numbers;
+    const hasBonus = numbers.includes(bonusNumber);
 
+    if (count === 6) return 1; // 1등
+    if (count === 5 && hasBonus) return 2; // 2등
+    if (count === 5) return 3; // 3등
+    if (count === 4) return 4; // 4등
+    if (count === 3) return 5; // 5등
+  }
   // TODO: 추가 기능 구현
 }
 
