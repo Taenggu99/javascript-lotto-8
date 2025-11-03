@@ -8,7 +8,7 @@ class App {
 
     // #2 구입 금액 유효성 검사
     if (!this.isValidAmount(purchaseAmount)) {
-      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요.\n");
+      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요.");
     }
 
     // #3 구매 장수 계산
@@ -92,7 +92,7 @@ class App {
       0
     );
 
-    let profitRate = Math.round((totalPrize / purchaseAmount) * 100 * 10) / 10;
+    const profitRate = Math.round((totalPrize / purchaseAmount) * 1000) / 10;
     // 소수점 한자리까지 표시
     profitRate = profitRate.toFixed(1);
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
