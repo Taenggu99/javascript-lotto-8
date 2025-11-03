@@ -1,4 +1,4 @@
-import { Random, Console } from "@woowacourse/mission-utils";
+import { Random } from "@woowacourse/mission-utils";
 
 class Lotto {
   #numbers; // 로또 번호 6개 저장
@@ -12,10 +12,12 @@ class Lotto {
     if (numbers.length !== 6) {
       throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
     }
-
     const hasDuplicate = new Set(numbers).size !== numbers.length;
     if (hasDuplicate) {
-      throw new Error("[ERROR] 로또 번호에 중복이 있습니다.");
+      throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
+    }
+    if (!numbers.every((num) => Number.isInteger(num) && num >= 1 && num <= 45)) {
+      throw new Error("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
   }
 
@@ -33,25 +35,11 @@ class Lotto {
   getRank(matchCount, bonusNumber) {
     const hasBonus = this.#numbers.includes(bonusNumber);
 
-    if (matchCount === 6) {
-      return 1;
-    }
-
-    if (matchCount === 5) {
-      if (hasBonus) {
-        return 2;
-      }
-      return 3;
-    }
-
-    if (matchCount === 4) {
-      return 4;
-    }
-
-    if (matchCount === 3) {
-      return 5;
-    }
-
+    if (matchCount === 6) return 1;
+    if (matchCount === 5 && hasBonus) return 2;
+    if (matchCount === 5) return 3;
+    if (matchCount === 4) return 4;
+    if (matchCount === 3) return 5;
     return 0;
   }
 
@@ -65,9 +53,7 @@ class Lotto {
     if (!Array.isArray(numbers) || numbers.length !== 6) return false;
     const hasDuplicate = new Set(numbers).size !== numbers.length;
     if (hasDuplicate) return false;
-    return numbers.every(
-      (num) => Number.isInteger(num) && num >= 1 && num <= 45
-    );
+    return numbers.every((num) => Number.isInteger(num) && num >= 1 && num <= 45);
   }
 
   // #9 보너스 번호 유효성 검사
