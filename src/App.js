@@ -8,7 +8,7 @@ class App {
 
     // #2 구입 금액 유효성 검사
     if (!this.isValidAmount(purchaseAmount)) {
-      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요\n");
+      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요.\n");
     }
 
     // #3 구매 장수 계산
@@ -32,14 +32,14 @@ class App {
       .map((n) => Number(n.trim()));
 
     if (!Lotto.isValidWinningNumber(winningArr)) {
-      throw new Error("[ERROR] 당첨 번호를 재 확인해주세요");
+      throw new Error("[ERROR] 당첨 번호를 재 확인해주세요.");
     }
 
     // #8 보너스 번호 입력
     const bonusInput = await this.getBonusNumber();
     const bonusNumber = Number(bonusInput.trim());
     if (!Lotto.isValidBonusNumber(bonusNumber)) {
-      throw new Error("[ERROR] 보너스 번호를 재 입력해주세요");
+      throw new Error("[ERROR] 보너스 번호를 재 입력해주세요.");
     }
 
     //  #10 당첨 결과 계산 추가
@@ -100,7 +100,7 @@ class App {
 
   // #1 구입 금액 입력
   async getpurchaseAmount() {
-    const input = await Console.readLineAsync("구입금액을 입력해 주세요 \n");
+    const input = await Console.readLineAsync("구입금액을 입력해 주세요.\n");
     return Number(input.trim());
   }
 
@@ -112,14 +112,14 @@ class App {
   // #6 당첨 번호 입력
   async getWinningNumber() {
     Console.print("");
-    const input = await Console.readLineAsync("당첨 번호를 입력해 주세요\n");
+    const input = await Console.readLineAsync("당첨 번호를 입력해 주세요.\n");
     return input;
   }
 
   // #8 보너스 번호 입력
   async getBonusNumber() {
     Console.print("");
-    const input = await Console.readLineAsync("보너스 번호를 입력해주세요\n");
+    const input = await Console.readLineAsync("보너스 번호를 입력해주세요.\n");
     return input;
   }
 }
