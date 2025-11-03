@@ -8,7 +8,7 @@ class App {
 
     // #2 구입 금액 유효성 검사
     if (!this.isValidAmount(purchaseAmount)) {
-      throw new Error("[Error] 구입 금액은 1000원 단위로 입력해주세요\n");
+      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요\n");
     }
 
     // #3 구매 장수 계산
@@ -32,14 +32,14 @@ class App {
       .map((n) => Number(n.trim()));
 
     if (!Lotto.isValidWinningNumber(winningArr)) {
-      throw new Error("[Error] 당첨 번호를 재 확인해주세요");
+      throw new Error("[ERROR] 당첨 번호를 재 확인해주세요");
     }
 
     // #8 보너스 번호 입력
     const bonusInput = await this.getBonusNumber();
     const bonusNumber = Number(bonusInput.trim());
     if (!Lotto.isValidBonusNumber(bonusNumber)) {
-      throw new Error("[Error] 보너스 번호를 재 입력해주세요");
+      throw new Error("[ERROR] 보너스 번호를 재 입력해주세요");
     }
 
     //  #10 당첨 결과 계산 추가
@@ -92,7 +92,7 @@ class App {
       0
     );
 
-    const profitRate = ((totalPrize / purchaseAmount) * 100).toFixed(2);
+    const profitRate = ((totalPrize / purchaseAmount) * 100)/10;
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
   }
 

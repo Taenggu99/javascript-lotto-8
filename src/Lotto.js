@@ -26,15 +26,30 @@ class Lotto {
 
   // #11 등수 판별
   getRank(matchCount, bonusNumber) {
-    const hasBonus = this.#numbers.includes(bonusNumber);
-    switch (matchCount) {
-      case 6: return 1;
-      case 5: return hasBonus ? 2 : 3;
-      case 4: return 4;
-      case 3: return 5;
-      default: return 0;
-    }
+  const hasBonus = this.#numbers.includes(bonusNumber);
+
+  if (matchCount === 6) {
+    return 1;
   }
+
+  if (matchCount === 5) {
+    if (hasBonus) {
+      return 2;
+    } 
+    return 3;
+  }
+
+  if (matchCount === 4) {
+    return 4;
+  }
+
+  if (matchCount === 3) {
+    return 5;
+  }
+
+  return 0;
+}
+
 
   // #4 로또 번호 랜덤 생성
   static generateRandomNumbers() {
@@ -47,7 +62,7 @@ class Lotto {
     const hasDuplicate = new Set(numbers).size !== numbers.length;
     if (hasDuplicate) return false;
     return numbers.every(num => Number.isInteger(num) && num >= 1 && num <= 45);
-  }
+  } 
 
   // #9 보너스 번호 유효성 검사
   static isValidBonusNumber(number) {
