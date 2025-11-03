@@ -61,6 +61,7 @@ class App {
     };
 
     // #12 당첨 통계 출력
+    Console.print("");
     Console.print("당첨 통계");
     Console.print("---");
 
@@ -85,13 +86,13 @@ class App {
       }
     });
 
-    // ✅ #13 수익률 계산
+    // #13 수익률 계산
     const totalPrize = Object.entries(stats).reduce(
       (sum, [rank, count]) => sum + prizeMoney[Number(rank)] * count,
       0
     );
 
-    const profitRate = ((totalPrize / purchaseAmount) * 100).toFixed(2);
+    const profitRate = ((totalPrize / purchaseAmount) * 100).toFixed(1);
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
   }
 
