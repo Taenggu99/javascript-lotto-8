@@ -92,7 +92,9 @@ class App {
       0
     );
 
-const profitRate = Math.round((totalPrize / purchaseAmount) * 100 * 10) / 10;
+    let profitRate = Math.round((totalPrize / purchaseAmount) * 100 * 10) / 10;
+    // 소수점 한자리까지 표시
+    profitRate = profitRate.toFixed(1);
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
   }
 
