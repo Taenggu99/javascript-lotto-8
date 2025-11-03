@@ -47,7 +47,7 @@ class App {
     tickets.forEach((ticket) => {
       const matchCount = ticket.matchCount(winningArr);
       const rank = ticket.getRank(matchCount, bonusNumber);
-      stats[rank]++; // ✅ 꽝(0)도 카운트하도록!
+      stats[rank]++; // 꽝(0)도 카운트하도록!
     });
 
     //  #11 등수별 상금 테이블 추가
@@ -92,7 +92,7 @@ class App {
       0
     );
 
-    const profitRate = ((totalPrize / purchaseAmount) * 100)/10;
+const profitRate = Math.round((totalPrize / purchaseAmount) * 100 * 10) / 10;
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
   }
 
